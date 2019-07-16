@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemystifyingThreading", "Chapter4\DemystifyingThreading.csproj", "{C04AF53C-B1E0-409D-A324-003000D331A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter1", "Chapter1", "{F874C981-71A0-4DDD-9694-AC8385E1E90D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter2", "Chapter2", "{D02A099C-5B53-45F2-99AF-6823C793AC46}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter3", "Chapter3", "{43AAA5EC-EF73-41D1-A335-91662541EFB5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter4", "Chapter4", "{62395B56-22D2-4CB9-B007-35C07E24CB5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter5", "Chapter5", "{FE7C9750-86DD-4889-A9B8-481A0D1554E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter6", "Chapter6", "{37108FF1-4CAD-4ADA-BA68-0766EAB2B4E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter7", "Chapter7", "{9D6E0788-822F-482B-8582-50128D043EC5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter8", "Chapter8", "{586A1C13-A717-4491-BFEF-006A409A5BAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter9", "Chapter9", "{C4E27471-8795-4AC9-9100-073FA8F619C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C04AF53C-B1E0-409D-A324-003000D331A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C04AF53C-B1E0-409D-A324-003000D331A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C04AF53C-B1E0-409D-A324-003000D331A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C04AF53C-B1E0-409D-A324-003000D331A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C04AF53C-B1E0-409D-A324-003000D331A8} = {62395B56-22D2-4CB9-B007-35C07E24CB5C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54A25E92-EC1C-4C57-8E8D-E9EDEFD0BC64}
+	EndGlobalSection
+EndGlobal
