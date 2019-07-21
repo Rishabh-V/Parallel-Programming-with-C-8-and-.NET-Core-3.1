@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace ThreadingBasics
+namespace ExceptionHandling
 {
     class Program
     {
@@ -25,7 +25,6 @@ namespace ThreadingBasics
             {
                 Console.WriteLine($"An exception occurred while creating threads {ex.Message}");
             }
-
 
             Console.ReadLine();
         }

@@ -1,32 +1,16 @@
 ﻿using System;
 using System.Threading;
 
-namespace ThreadingBasics
+namespace MainThread
 {
+    /// <summary>
+    /// The Program demonstrates the default Main thread and its properties. 
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
         {
-            try
-            {
-                //// Main Thread
-                WriteToConsole();
-
-                //// Thread 1
-                Thread thread1 = new Thread(WriteToConsole) { Name = "Thread1" };
-                thread1.Start();
-
-                //// Thread 2
-                Thread thread2 = new Thread(WriteToConsole) { Name = "Thread2" };
-                thread2.Start();
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An exception occurred while creating threads {ex.Message}");
-            }
-
-
+            WriteToConsole();
             Console.ReadLine();
         }
 
@@ -43,12 +27,7 @@ namespace ThreadingBasics
             Console.WriteLine($"IsThreadPoolThread :{Thread.CurrentThread.IsThreadPoolThread}"); //// Displays if thread is a CLR thread pool thread
             Console.WriteLine($"ThreadState :{Thread.CurrentThread.ThreadState}");  //// Displays the thread state
             Console.WriteLine($"Current Culture : {Thread.CurrentThread.CurrentCulture}"); //// Displays current culture for main thread and throws InvalidOperationException for created threads.
-            Console.WriteLine($"Current UI Culture : {Thread.CurrentThread.CurrentUICulture}");  //// Displays current culture for main thread and throws InvalidOperationException for created threads.
-            Thread.Sleep(5000);
-            if (!string.Equals(name, "Main Thread"))
-            {
-                throw new InvalidOperationException();
-            }
+            Console.WriteLine($"Current UI Culture : {Thread.CurrentThread.CurrentUICulture}");  //// Displays current culture for main thread and throws InvalidOperationException for created threads.            
         }
     }
 }

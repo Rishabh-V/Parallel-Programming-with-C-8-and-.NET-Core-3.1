@@ -1,31 +1,22 @@
 ﻿using System;
 using System.Threading;
 
-namespace ThreadingBasics
+namespace MultipleThreads
 {
+    /// <summary>
+    /// The program demonstrates creating new threads and executing code concurrently. The program prints the properties of each thread including Main thread.
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
         {
-            try
-            {
-                //// Main Thread
-                WriteToConsole();
+            WriteToConsole();
 
-                //// Thread 1
-                Thread thread1 = new Thread(WriteToConsole) { Name = "Thread1" };
-                thread1.Start();
+            Thread thread1 = new Thread(WriteToConsole) { Name = "Thread1" };
+            thread1.Start();
 
-                //// Thread 2
-                Thread thread2 = new Thread(WriteToConsole) { Name = "Thread2" };
-                thread2.Start();
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An exception occurred while creating threads {ex.Message}");
-            }
-
+            Thread thread2 = new Thread(WriteToConsole) { Name = "Thread2" };
+            thread2.Start();
 
             Console.ReadLine();
         }
@@ -45,10 +36,6 @@ namespace ThreadingBasics
             Console.WriteLine($"Current Culture : {Thread.CurrentThread.CurrentCulture}"); //// Displays current culture for main thread and throws InvalidOperationException for created threads.
             Console.WriteLine($"Current UI Culture : {Thread.CurrentThread.CurrentUICulture}");  //// Displays current culture for main thread and throws InvalidOperationException for created threads.
             Thread.Sleep(5000);
-            if (!string.Equals(name, "Main Thread"))
-            {
-                throw new InvalidOperationException();
-            }
         }
     }
 }
