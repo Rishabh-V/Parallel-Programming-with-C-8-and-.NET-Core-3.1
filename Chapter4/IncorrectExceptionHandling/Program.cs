@@ -1,22 +1,30 @@
 ﻿using System;
 using System.Threading;
 
-namespace MultipleThreads
+namespace IncorrectExceptionHandling
 {
-    /// <summary>
-    /// The program demonstrates creating new threads and executing code concurrently. The program prints the properties of each thread including Main thread.
-    /// </summary>
     class Program
     {
         static void Main(string[] args)
         {
-            WriteToConsole();
+            try
+            {
+                //// Main Thread
+                WriteToConsole();
 
-            Thread thread1 = new Thread(WriteToConsole) { Name = "Thread1" };
-            thread1.Start();
+                //// Thread 1
+                Thread thread1 = new Thread(WriteToConsole) { Name = "Thread1" };
+                thread1.Start();
 
-            Thread thread2 = new Thread(WriteToConsole) { Name = "Thread2" };
-            thread2.Start();
+                //// Thread 2
+                Thread thread2 = new Thread(WriteToConsole) { Name = "Thread2" };
+                thread2.Start();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An exception occurred while creating threads {ex.Message}");
+            }
 
             Console.ReadLine();
         }
@@ -24,8 +32,8 @@ namespace MultipleThreads
         static void WriteToConsole()
         {
             string name = string.IsNullOrWhiteSpace(Thread.CurrentThread.Name) ? "Main Thread" : Thread.CurrentThread.Name;
-            if(string.IsNullOrWhiteSpace(Thread.CurrentThread.Name))
-            { 
+            if (string.IsNullOrWhiteSpace(Thread.CurrentThread.Name))
+            {
                 Thread.CurrentThread.Name = name;
             }
 
@@ -41,6 +49,10 @@ namespace MultipleThreads
             Console.WriteLine($"Current Culture : {Thread.CurrentThread.CurrentCulture}"); //// Displays current culture for main thread and throws InvalidOperationException for created threads.
             Console.WriteLine($"Current UI Culture : {Thread.CurrentThread.CurrentUICulture}");  //// Displays current culture for main thread and throws InvalidOperationException for created threads.
             Thread.Sleep(5000);
+            if (!string.Equals(name, "Main Thread"))
+            {
+                throw new InvalidOperationException();
+            }
         }
     }
 }
