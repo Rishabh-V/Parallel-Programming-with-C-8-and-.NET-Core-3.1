@@ -30,16 +30,15 @@ namespace Stocks.Windows
 
             #region Synchronous Calls            
 
-            var request = WebRequest.Create("https://localhost:44394/api/StockSynchronous");
-            var response = request.GetResponse();
-            Stream dataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(dataStream);
-            string responseFromServer = reader.ReadToEnd();
-            var data = JsonConvert.DeserializeObject<IEnumerable<Stock>>(responseFromServer);
+            //var request = WebRequest.Create("https://localhost:44394/api/StockSynchronous");
+            //var response = request.GetResponse();
+            //Stream dataStream = response.GetResponseStream();
+            //StreamReader reader = new StreamReader(dataStream);
+            //string responseFromServer = reader.ReadToEnd();
+            //var data = JsonConvert.DeserializeObject<IEnumerable<Stock>>(responseFromServer);
 
-            bindingSource1.DataSource = data.Where(price => price.StockName == searchText.Text);
-            stockData.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
-            stockData.DataSource = bindingSource1;
+            //bindingSource1.DataSource = data.Where(price => price.StockName == searchText.Text);
+            //stockData.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
             #endregion
 
             #region Async Calls
