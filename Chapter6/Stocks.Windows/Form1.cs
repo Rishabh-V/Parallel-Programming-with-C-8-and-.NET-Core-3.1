@@ -44,7 +44,7 @@ namespace Stocks.Windows
             #region Async Calls
             using (HttpClient client = new HttpClient())
             {
-                var response = await client.GetAsync($"https://localhost:44394/api/StockS");
+                var response = await client.GetAsync("https://localhost:44394/api/Stocks");
 
                 var content = await response.Content.ReadAsStringAsync();
 
