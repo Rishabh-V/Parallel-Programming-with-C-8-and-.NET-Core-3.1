@@ -16,8 +16,8 @@ namespace TAPExceptionHandling
             //var task = GetDataAsync();
             //try
             //{
-            //    var data = await task;
-            //    Console.WriteLine(data);
+            //    //var data = await task;
+            //    //Console.WriteLine(data);
             //}
             //catch (Exception ex)
             //{
@@ -33,7 +33,7 @@ namespace TAPExceptionHandling
             #endregion
 
             //#region Multiple task exception handling
-            var taskfromAPI = GetDataAsync();
+            var taskfromAPI = GetDataAsyncNested();
             var taskFromFile = GetDataAsyncFromAnotherSource();
             var tasks = new List<Task<string>>();
             tasks.Add(taskfromAPI);
@@ -83,6 +83,15 @@ namespace TAPExceptionHandling
         }
 
         /// <summary>
+        /// Dummy nested method
+        /// </summary>
+        /// <returns></returns>
+        static async Task<String> GetDataAsyncNested()
+        {
+            return await GetDataAsync();
+        }
+
+        /// <summary>
         /// Async method to retrieve data from API
         /// </summary>
         /// <returns></returns>
@@ -100,27 +109,6 @@ namespace TAPExceptionHandling
             catch
             {
                 throw;
-            }
-        }
-
-        /// <summary>
-        /// Method performing hig CPU intense calculation
-        /// </summary>
-        /// <returns></returns>
-        static async Task DoExpensiveCalculation()
-        {
-            decimal a = 1m;
-            decimal b = 0m;
-            try
-            {
-                await Task.Run(() =>
-                {
-                    decimal.Divide(a, b);
-                });
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Exception occured in GetStocks1 - {ex.Message}");
             }
         }
     }
