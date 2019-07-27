@@ -12,6 +12,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter4", "Chapter4", "{62395B56-22D2-4CB9-B007-35C07E24CB5C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter6", "Chapter6", "{FE7C9750-86DD-4889-A9B8-481A0D1554E3}"
+	ProjectSection(SolutionItems) = preProject
+		Chapter6\BPB0067_Chapter 6.docx = Chapter6\BPB0067_Chapter 6.docx
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter5", "Chapter5", "{37108FF1-4CAD-4ADA-BA68-0766EAB2B4E0}"
 EndProject
@@ -42,6 +45,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CPUBoundvsIOBound", "Chapte
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAPExceptionHandling", "Chapter6\TAPExceptionHandling\TAPExceptionHandling.csproj", "{478D3261-9EBD-4361-8B72-56ECF7F356EA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B79951F5-1D0D-472E-AC52-9A48D9EF91A8} = {B79951F5-1D0D-472E-AC52-9A48D9EF91A8}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
