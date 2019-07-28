@@ -4,13 +4,13 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Globalization;
 
 namespace TAPExceptionHandling
 {
     class Program
     {
-        static async Task Main(string[] args)
+        //static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             #region Single exception handling
             //var task = GetDataAsync();
@@ -32,31 +32,89 @@ namespace TAPExceptionHandling
             //}
             #endregion
 
-            //#region Multiple task exception handling
-            var taskfromAPI = GetDataAsyncNested();
-            var taskFromFile = GetDataAsyncFromAnotherSource();
-            var tasks = new List<Task<string>>();
-            tasks.Add(taskfromAPI);
-            tasks.Add(taskFromFile);
-            var allTasks = Task.WhenAll(tasks);
+            #region Multiple task exception handling
+            //var taskfromAPI = GetDataAsyncNested();
+            //var taskFromFile = GetDataAsyncFromAnotherSource();
+            //var tasks = new List<Task<string>>();
+            //tasks.Add(taskfromAPI);
+            //tasks.Add(taskFromFile);
+            //var allTasks = Task.WhenAll(tasks);
+            //try
+            //{
+            //    await allTasks;
+            //}
+            //catch
+            //{
+            //    List<Tuple<string, string>> errors = allTasks.Exception.Flatten().InnerExceptions.Select(x => new Tuple<string,string>(x.Message, x.StackTrace)).ToList();
+            //    int counter = 0;
+            //    foreach (Tuple<string, string> error in errors)
+            //    {
+            //        counter++;
+            //        Console.WriteLine($"{counter}).Error - {error.Item1} \n Innerstack \n {error.Item2} \n");
+            //    }
+            //}
+
+            #endregion
+
+            #region Exception handling for async performed without await (Task.Wait())
+            var tasks = new List<Task>();
+            var task = GetDataAsync();
+            tasks.Add(task);
+            var task2 = Task.Run(() => DoHighCPUIntense());
+            tasks.Add(task2);
             try
             {
-                await allTasks;
+                Task.WhenAll(tasks).Wait();
             }
-            catch
+            catch (AggregateException agEx)
             {
-                List<String> errors = allTasks.Exception.Flatten().InnerExceptions.Select(x => x.Message).ToList();
+                List<Tuple<string, string>> errors = agEx.Flatten().InnerExceptions.Select(x => new Tuple<string, string>(x.Message, x.StackTrace)).ToList();
                 int counter = 0;
-                foreach (string error in errors)
+                foreach (Tuple<string, string> error in errors)
                 {
                     counter++;
-                    Console.WriteLine($"{counter}).Error - {error}");
+                    Console.WriteLine($"{counter}).Error - {error.Item1} \n Innerstack \n {error.Item2} \n");
                 }
             }
-
-            //#endregion
+            #endregion
 
             Console.Read();
+        }
+
+        /// <summary>
+        /// Async method doing high CPU operation
+        /// </summary>
+        /// <returns></returns>
+        private static void DoHighCPUIntense()
+        {
+            String location = @"C:\";
+
+            Task<string> output = Task.Run(() =>
+                {
+                    List<string> files = new List<string>();
+                    for (int i = 0; i < 5; i++)
+                    {
+                        files.AddRange(Directory.GetFiles(location, "*.txt", SearchOption.AllDirectories).ToList());
+                    }
+                    return files.FirstOrDefault();
+                });
+            try
+            {
+                output.Wait();
+            }
+            catch (AggregateException agEx)
+            {
+                //Further handle method can be used to do specific action based on the type of exception
+                agEx.Handle(x =>
+                {
+                    if (x is UnauthorizedAccessException)
+                    {
+                        Console.WriteLine("Specific action for UnauthorizedAccessException");
+                    }
+                    return true;
+                });
+            }
+            return string.Empty;
         }
 
         /// <summary>
