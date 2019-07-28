@@ -85,7 +85,7 @@ namespace TAPExceptionHandling
         /// Async method doing high CPU operation
         /// </summary>
         /// <returns></returns>
-        private static void DoHighCPUIntense()
+        private static string DoHighCPUIntense()
         {
             String location = @"C:\";
 
