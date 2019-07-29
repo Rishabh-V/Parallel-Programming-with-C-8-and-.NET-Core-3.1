@@ -4,6 +4,10 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Linq;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
+using System.Net;
+using System.Data;
 
 namespace TAPExceptionHandling
 {
@@ -16,12 +20,12 @@ namespace TAPExceptionHandling
             //var task = GetDataAsync();
             //try
             //{
-            //    //var data = await task;
-            //    //Console.WriteLine(data);
+            //    var data = await task;
+            //    Console.WriteLine(data);
             //}
             //catch (Exception ex)
             //{
-            //    //Console.WriteLine($"Exception occured in GetDataAsync method - {ex.Message} \n Innerstack \n {ex.StackTrace}");
+            //    Console.WriteLine($"Exception occured in GetDataAsync method - {ex.Message} \n Innerstack \n {ex.StackTrace}");
             //    List<String> errors = task.Exception.Flatten().InnerExceptions.Select(x => x.Message).ToList();
             //    int counter = 0;
             //    foreach (string error in errors)

@@ -56,5 +56,12 @@ namespace Stocks.Windows
 
             progressMessage.Text = $"Loaded stocks for {searchText.Text} in {ticker.ElapsedMilliseconds}ms";
         }
+
+        private void AddStock_Click(object sender, EventArgs e)
+        {
+            addStockForm form = new addStockForm();
+            form.Show(this);
+            Hide();
+        }
     }
 }

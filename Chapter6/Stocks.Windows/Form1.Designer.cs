@@ -34,6 +34,7 @@
             this.progressMessage = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.Notes = new System.Windows.Forms.RichTextBox();
+            this.addStock = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.stockData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,11 +86,22 @@
             this.Notes.TabIndex = 6;
             this.Notes.Text = "";
             // 
+            // addStock
+            // 
+            this.addStock.Location = new System.Drawing.Point(683, 395);
+            this.addStock.Name = "addStock";
+            this.addStock.Size = new System.Drawing.Size(105, 43);
+            this.addStock.TabIndex = 7;
+            this.addStock.Text = "Add Stock";
+            this.addStock.UseVisualStyleBackColor = true;
+            this.addStock.Click += new System.EventHandler(this.AddStock_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.addStock);
             this.Controls.Add(this.Notes);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.progressMessage);
@@ -112,6 +124,7 @@
         private System.Windows.Forms.Label progressMessage;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.RichTextBox Notes;
+        private System.Windows.Forms.Button addStock;
     }
 }
 

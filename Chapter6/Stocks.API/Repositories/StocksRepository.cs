@@ -33,5 +33,11 @@ namespace Stocks.API.Repositories
         {
             return await _context.Stocks.Where(t => t.StockName == stockName).ToListAsync();
         }
+
+        public async Task AddStocksAsync(Stock stock)
+        {
+            await _context.Stocks.AddAsync(stock);
+            _context.SaveChanges();
+        }
     }
 }
