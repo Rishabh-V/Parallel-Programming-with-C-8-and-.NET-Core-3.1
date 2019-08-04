@@ -199,6 +199,185 @@ namespace Stocks.API.Contexts
                     TradeDate = DateTime.Today.Date.AddDays(-1),
                     Volume = 5000
 
+                },
+                new Stock(){
+                Id = 21,
+                    StockName = "ABC",
+                    Price = 10.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-20),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 22,
+                    StockName = "ABC",
+                    Price = 2.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-19),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 23,
+                    StockName = "ABC",
+                    Price = 5.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-18),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 24,
+                    StockName = "ABC",
+                    Price = 8.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-17),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 25,
+                    StockName = "ABC",
+                    Price = 1.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-16),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 26,
+                    StockName = "ABC",
+                    Price = 10.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-15),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 27,
+                    StockName = "ABC",
+                    Price = 2.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-14),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 28,
+                    StockName = "ABC",
+                    Price = 5.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-13),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 29,
+                    StockName = "ABC",
+                    Price = 8.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-12),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 30,
+                    StockName = "ABC",
+                    Price = 1.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-11),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 31,
+                    StockName = "XYZ",
+                    Price = 10.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-20),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 32,
+                    StockName = "XYZ",
+                    Price = 2.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-19),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 33,
+                    StockName = "XYZ",
+                    Price = 5.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-18),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 34,
+                    StockName = "XYZ",
+                    Price = 8.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-17),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 35,
+                    StockName = "XYZ",
+                    Price = 1.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-16),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 36,
+                    StockName = "XYZ",
+                    Price = 10.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-15),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 37,
+                    StockName = "XYZ",
+                    Price = 2.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-14),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 38,
+                    StockName = "XYZ",
+                    Price = 5.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-13),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 39,
+                    StockName = "XYZ",
+                    Price = 8.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-12),
+                    Volume = 5000
+
+                },
+                new Stock()
+                {
+                    Id = 40,
+                    StockName = "XYZ",
+                    Price = 1.1,
+                    TradeDate = DateTime.Today.Date.AddDays(-11),
+                    Volume = 5000
+
                 });
             base.OnModelCreating(modelBuilder);
         }

@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Stocks.API.Models.DAO;
 using Stocks.API.Repositories;
 
 namespace Stocks.API.Controllers
@@ -25,7 +26,7 @@ namespace Stocks.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetStocks()
         {
-            Thread.Sleep(10000);
+            await Task.Delay(5000);  // So that we can see delay in UI
             var stocks = await _stocksRepository.GetStocksAsync();
             return Ok(stocks);
         }
@@ -42,6 +43,22 @@ namespace Stocks.API.Controllers
             else
             {
                 return NotFound();
+            }
+        }
+
+        // POST: api/Stocks
+        [HttpPost]
+        public async Task<IActionResult> AddStock(Stock stock)
+        {
+            await Task.Delay(5000);  // So that we can see delay in UI
+            if (stock == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                await _stocksRepository.AddStocksAsync(stock);
+                return Created($"https://localhost:44394/api/stock/{stock.StockName}", stock);
             }
         }
     }

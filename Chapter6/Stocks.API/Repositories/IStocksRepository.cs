@@ -13,5 +13,7 @@ namespace Stocks.API.Repositories
         Task<IEnumerable<Stock>> GetStocksAsync();
 
         Task<IEnumerable<Stock>> GetStocksAsync(string stockName);
+
+        Task AddStocksAsync(Stock stock);
     }
 }

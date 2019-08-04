@@ -33,7 +33,8 @@
             this.stockData = new System.Windows.Forms.DataGridView();
             this.progressMessage = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.Notes = new System.Windows.Forms.RichTextBox();
+            this.Logs = new System.Windows.Forms.RichTextBox();
+            this.addStock = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.stockData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,11 +47,11 @@
             // 
             // search
             // 
-            this.search.Location = new System.Drawing.Point(699, 18);
+            this.search.Location = new System.Drawing.Point(683, 18);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(75, 23);
+            this.search.Size = new System.Drawing.Size(105, 23);
             this.search.TabIndex = 1;
-            this.search.Text = "Search";
+            this.search.Text = "Search stock";
             this.search.UseVisualStyleBackColor = true;
             this.search.Click += new System.EventHandler(this.Search_Click);
             // 
@@ -77,20 +78,31 @@
             this.progressBar.Size = new System.Drawing.Size(100, 23);
             this.progressBar.TabIndex = 5;
             // 
-            // Notes
+            // Logs
             // 
-            this.Notes.Location = new System.Drawing.Point(683, 63);
-            this.Notes.Name = "Notes";
-            this.Notes.Size = new System.Drawing.Size(105, 320);
-            this.Notes.TabIndex = 6;
-            this.Notes.Text = "";
+            this.Logs.Location = new System.Drawing.Point(683, 63);
+            this.Logs.Name = "Logs";
+            this.Logs.Size = new System.Drawing.Size(105, 320);
+            this.Logs.TabIndex = 6;
+            this.Logs.Text = "";
+            // 
+            // addStock
+            // 
+            this.addStock.Location = new System.Drawing.Point(683, 395);
+            this.addStock.Name = "addStock";
+            this.addStock.Size = new System.Drawing.Size(105, 43);
+            this.addStock.TabIndex = 7;
+            this.addStock.Text = "Add Stock";
+            this.addStock.UseVisualStyleBackColor = true;
+            this.addStock.Click += new System.EventHandler(this.AddStock_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Notes);
+            this.Controls.Add(this.addStock);
+            this.Controls.Add(this.Logs);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.progressMessage);
             this.Controls.Add(this.stockData);
@@ -111,7 +123,8 @@
         private System.Windows.Forms.DataGridView stockData;
         private System.Windows.Forms.Label progressMessage;
         private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.RichTextBox Notes;
+        private System.Windows.Forms.RichTextBox Logs;
+        private System.Windows.Forms.Button addStock;
     }
 }
 
