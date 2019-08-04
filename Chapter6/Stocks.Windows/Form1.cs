@@ -61,10 +61,10 @@ namespace Stocks.Windows
                 return;
             }
 
-            this.cts = new CancellationTokenSource();
+            cts = new CancellationTokenSource();
 
             //Delegate on cancellation token when there is a cancellation, executes on calling thread's context in this case UI
-            this.cts.Token.Register(() =>
+            cts.Token.Register(() =>
             {
                 progressMessage.Text = "Search is cancelled" ;
             });
@@ -73,8 +73,7 @@ namespace Stocks.Windows
             try
             {
 
-                var getData = await GetDataFromAPIAsync(searchText.Text, this.cts.Token);
-                stockData.DataSource = getData;
+                stockData.DataSource = await GetDataFromAPIAsync(searchText.Text, cts.Token);
             }
             catch (OperationCanceledException ex)
             {
@@ -82,10 +81,7 @@ namespace Stocks.Windows
             }
             finally
             {
-                if (cts != null)
-                {
-                    cts.Dispose();
-                }
+                cts = null;
             }
             #endregion
 
@@ -107,11 +103,6 @@ namespace Stocks.Windows
             {
                 var response = await client.GetAsync(requestUri, ctsAPI);
 
-                //if (ctsAPI.IsCancellationRequested)
-                //{
-                //    return bindingSource1;
-                //}
-                
                 response.EnsureSuccessStatusCode();
 
                 var content = await response.Content.ReadAsStringAsync();
