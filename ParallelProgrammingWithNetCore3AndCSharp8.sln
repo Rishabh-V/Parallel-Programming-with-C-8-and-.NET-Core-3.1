@@ -63,9 +63,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskCancellation", "Chapter
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskContinuations", "Chapter4\TaskContinuations\TaskContinuations.csproj", "{86F930A9-11AB-4E9C-A96D-0B5CE3A4F425}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskWithResult", "Chapter4\TaskWithResult\TaskWithResult.csproj", "{EFEB3ECF-25F4-40F2-ACDC-60B4B96BCE58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskWithResult", "Chapter4\TaskWithResult\TaskWithResult.csproj", "{EFEB3ECF-25F4-40F2-ACDC-60B4B96BCE58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandlingWithTask", "Chapter4\ExceptionHandlingWithTask\ExceptionHandlingWithTask.csproj", "{65E8E80C-9553-46D3-B3D0-034FEB1C3E71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionHandlingWithTask", "Chapter4\ExceptionHandlingWithTask\ExceptionHandlingWithTask.csproj", "{65E8E80C-9553-46D3-B3D0-034FEB1C3E71}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stocks.WPF", "Chapter6\Stocks.WPF\Stocks.WPF.csproj", "{7C6BD387-8579-4A98-B9EB-EEAA7BF62FEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,10 +143,10 @@ Global
 		{65E8E80C-9553-46D3-B3D0-034FEB1C3E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65E8E80C-9553-46D3-B3D0-034FEB1C3E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65E8E80C-9553-46D3-B3D0-034FEB1C3E71}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B67EE0A2-336A-4E00-8DD8-801CADED1061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B67EE0A2-336A-4E00-8DD8-801CADED1061}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B67EE0A2-336A-4E00-8DD8-801CADED1061}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B67EE0A2-336A-4E00-8DD8-801CADED1061}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C6BD387-8579-4A98-B9EB-EEAA7BF62FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C6BD387-8579-4A98-B9EB-EEAA7BF62FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C6BD387-8579-4A98-B9EB-EEAA7BF62FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C6BD387-8579-4A98-B9EB-EEAA7BF62FEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -167,7 +169,7 @@ Global
 		{86F930A9-11AB-4E9C-A96D-0B5CE3A4F425} = {62395B56-22D2-4CB9-B007-35C07E24CB5C}
 		{EFEB3ECF-25F4-40F2-ACDC-60B4B96BCE58} = {62395B56-22D2-4CB9-B007-35C07E24CB5C}
 		{65E8E80C-9553-46D3-B3D0-034FEB1C3E71} = {62395B56-22D2-4CB9-B007-35C07E24CB5C}
-		{B67EE0A2-336A-4E00-8DD8-801CADED1061} = {FE7C9750-86DD-4889-A9B8-481A0D1554E3}
+		{7C6BD387-8579-4A98-B9EB-EEAA7BF62FEE} = {FE7C9750-86DD-4889-A9B8-481A0D1554E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54A25E92-EC1C-4C57-8E8D-E9EDEFD0BC64}
