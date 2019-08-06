@@ -51,17 +51,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TAPExceptionHandling", "Cha
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreadPool", "Chapter4\ThreadPool\ThreadPool.csproj", "{7D5A4BB5-7207-4F59-8E02-2F46C87ABDEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadPoolVsThreads", "Chapter4\ThreadPoolVsThreads\ThreadPoolVsThreads.csproj", "{A29561A1-6225-481B-B2A7-4CEBEBDEF6F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreadPoolVsThreads", "Chapter4\ThreadPoolVsThreads\ThreadPoolVsThreads.csproj", "{A29561A1-6225-481B-B2A7-4CEBEBDEF6F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadPoolStats", "Chapter4\ThreadPoolStats\ThreadPoolStats.csproj", "{5867D9F2-8E1A-47E8-9B05-BC7475A9A13E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreadPoolStats", "Chapter4\ThreadPoolStats\ThreadPoolStats.csproj", "{5867D9F2-8E1A-47E8-9B05-BC7475A9A13E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasks", "Chapter4\Tasks\Tasks.csproj", "{7B32ED91-FCB3-4328-B20E-F37F38886616}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tasks", "Chapter4\Tasks\Tasks.csproj", "{7B32ED91-FCB3-4328-B20E-F37F38886616}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwait", "Chapter4\AsyncAwait\AsyncAwait.csproj", "{86F20562-0C69-4BF8-B733-30BB71AD04AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncAwait", "Chapter4\AsyncAwait\AsyncAwait.csproj", "{86F20562-0C69-4BF8-B733-30BB71AD04AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskCancellation", "Chapter4\TaskCancellation\TaskCancellation.csproj", "{E8F46914-7851-4EDB-AAEB-46338AC52973}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskCancellation", "Chapter4\TaskCancellation\TaskCancellation.csproj", "{E8F46914-7851-4EDB-AAEB-46338AC52973}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskContinuations", "Chapter4\TaskContinuations\TaskContinuations.csproj", "{86F930A9-11AB-4E9C-A96D-0B5CE3A4F425}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskContinuations", "Chapter4\TaskContinuations\TaskContinuations.csproj", "{86F930A9-11AB-4E9C-A96D-0B5CE3A4F425}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskWithResult", "Chapter4\TaskWithResult\TaskWithResult.csproj", "{EFEB3ECF-25F4-40F2-ACDC-60B4B96BCE58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandlingWithTask", "Chapter4\ExceptionHandlingWithTask\ExceptionHandlingWithTask.csproj", "{65E8E80C-9553-46D3-B3D0-034FEB1C3E71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +133,14 @@ Global
 		{86F930A9-11AB-4E9C-A96D-0B5CE3A4F425}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86F930A9-11AB-4E9C-A96D-0B5CE3A4F425}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86F930A9-11AB-4E9C-A96D-0B5CE3A4F425}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFEB3ECF-25F4-40F2-ACDC-60B4B96BCE58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFEB3ECF-25F4-40F2-ACDC-60B4B96BCE58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFEB3ECF-25F4-40F2-ACDC-60B4B96BCE58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFEB3ECF-25F4-40F2-ACDC-60B4B96BCE58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65E8E80C-9553-46D3-B3D0-034FEB1C3E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65E8E80C-9553-46D3-B3D0-034FEB1C3E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65E8E80C-9553-46D3-B3D0-034FEB1C3E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65E8E80C-9553-46D3-B3D0-034FEB1C3E71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -149,6 +161,8 @@ Global
 		{86F20562-0C69-4BF8-B733-30BB71AD04AA} = {62395B56-22D2-4CB9-B007-35C07E24CB5C}
 		{E8F46914-7851-4EDB-AAEB-46338AC52973} = {62395B56-22D2-4CB9-B007-35C07E24CB5C}
 		{86F930A9-11AB-4E9C-A96D-0B5CE3A4F425} = {62395B56-22D2-4CB9-B007-35C07E24CB5C}
+		{EFEB3ECF-25F4-40F2-ACDC-60B4B96BCE58} = {62395B56-22D2-4CB9-B007-35C07E24CB5C}
+		{65E8E80C-9553-46D3-B3D0-034FEB1C3E71} = {62395B56-22D2-4CB9-B007-35C07E24CB5C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54A25E92-EC1C-4C57-8E8D-E9EDEFD0BC64}
