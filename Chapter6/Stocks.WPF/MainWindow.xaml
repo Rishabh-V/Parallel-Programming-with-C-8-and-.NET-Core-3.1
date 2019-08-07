@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <TextBox x:Name="searchText" HorizontalAlignment="Left" Height="21" Margin="60,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="488"/>
+        <Button x:Name="search" Content="Search Stocks" HorizontalAlignment="Left" Margin="563,18,0,0" VerticalAlignment="Top" Width="196" Click="Search_Click" FontFamily="Segoe UI"/>
+        <DataGrid x:Name="stockData" Margin="60,56,139,75.04"/>
+        <Label x:Name="progressMessage" Content="" HorizontalAlignment="Left" Margin="60,373,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="logs" HorizontalAlignment="Left" Margin="687,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="294" Width="80"/>
 
     </Grid>
 </Window>
