@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -40,6 +41,9 @@ namespace Stocks.WPF
             var ticker = new Stopwatch();
             ticker.Start();
             search.Content = "Cancel";
+            taskProgress.IsIndeterminate = false;
+            taskProgress.Value = 0;
+            taskProgress.Maximum = 100;
 
             //On clicking of Search/Canacel checking to cancel opearation or perform search
             if (cts != null)
@@ -58,17 +62,23 @@ namespace Stocks.WPF
             });
 
             //Cancellation needs to be handled gracefully
+
+            //Progres reporting
+            var progress = new Progress<double>(percent =>
+            {
+                taskProgress.Value = percent;
+            });
             try
             {
-                stockData.ItemsSource = await GetDataFromAPIAsync(searchText.Text, cts.Token);
-                logs.Text += "API returned data" + Environment.NewLine;
+                stockData.ItemsSource = await GetDataFromAPIAsync(searchText.Text, cts.Token, progress);
+                logs.Text += "API returned data" + Environment.NewLine;                
             }
             catch (OperationCanceledException ex)
             {
                 logs.Text = ex.Message;
             }
-            catch(Exception ex)
-            {   
+            catch (Exception ex)
+            {
                 logs.Text = ex.Message;
             }
             finally
@@ -86,17 +96,18 @@ namespace Stocks.WPF
         /// <param name="intputSearchtext">Search text</param>
         /// <param name="ctsAPI">Cancellation token</param>
         /// <returns>Binding source</returns>
-        private async Task<IEnumerable<Stock>> GetDataFromAPIAsync(string intputSearchtext, CancellationToken ctsAPI)
+        private async Task<IEnumerable<Stock>> GetDataFromAPIAsync(string intputSearchtext, CancellationToken ctsAPI, IProgress<double> progress = null)
         {
             Uri requestUri = new Uri("https://localhost:44394/api/Stocks");
             using (HttpClient client = new HttpClient())
             {
                 var response = await client.GetAsync(requestUri, ctsAPI);
-
+                progress?.Report(75); // A simple way to report progress, here we are assuming 75% of task is completed.
+                await Task.Delay(5000);
                 response.EnsureSuccessStatusCode();
 
                 var content = await response.Content.ReadAsStringAsync();
-
+                progress?.Report(100); //REporting 100% task completeion
                 var data = JsonConvert.DeserializeObject<IEnumerable<Stock>>(content);
                 return data.Where(price => price.StockName == intputSearchtext);
             }
