@@ -101,7 +101,7 @@ namespace Stocks.WPF
         /// <param name="token">Cancellation token</param>
         /// <param name="progress">Progress reporting</param>
         /// <returns></returns>
-        private static async Task DownloadLargeFilAsync(string fileToDownload, string fileName, CancellationToken token, IProgress<ProgreesReport> progress = null)
+        private async Task DownloadLargeFilAsync(string fileToDownload, string fileName, CancellationToken token, IProgress<ProgreesReport> progress = null)
         {
             var ticker = new Stopwatch();
             ticker.Start();
