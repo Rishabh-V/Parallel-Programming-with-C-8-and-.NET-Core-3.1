@@ -55,7 +55,7 @@ namespace Stocks.Windows
 
             #region Async Calls
 
-            //On clicking of Search/Canacel checking to cancel opearation or perform search
+            //On clicking of Search/Cancel checking to cancel opearation or perform search
             if (cts != null)
             {
                 cts.Cancel();

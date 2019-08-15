@@ -15,11 +15,11 @@ namespace APMFileRead
         static Byte[] bytes = new Byte[100];
         static void Main(string[] args)
         {
-            Console.WriteLine($" Managed Thread Id in Main is : {Thread.CurrentThread.ManagedThreadId}"); //// The managed thread identifier.            
+            Console.WriteLine($"Managed Thread Id in Main is : {Thread.CurrentThread.ManagedThreadId}"); //// The managed thread identifier.            
             Stopwatch watch = new Stopwatch();
             watch.Start();
             FileStream fs = new FileStream(@"../../../TextFile.txt", FileMode.Open, FileAccess.Read, FileShare.Read, bytes.Length, FileOptions.Asynchronous);
-            Console.WriteLine($" Begin reading file, Elapsed time - {watch.ElapsedMilliseconds}");
+            Console.WriteLine($"Begin reading file, Elapsed time - {watch.ElapsedMilliseconds}");
             #region Async using APM
             //IAsyncResult result = fs.BeginRead(bytes, 0, bytes.Length, null, null);
             //while (!result.IsCompleted) // Proceeding with doing some other operation while file is being read
@@ -41,7 +41,7 @@ namespace APMFileRead
             watch.Stop();
             #region Async using APM, callback
             fs.BeginRead(bytes, 0, bytes.Length, EndRead, fs);
-            Console.WriteLine($" Do something else in main method while reading file, Elapsed time - {watch.ElapsedMilliseconds}");
+            Console.WriteLine($"Do something else in main method while reading file, Elapsed time - {watch.ElapsedMilliseconds}");
             #endregion region
            
             
@@ -58,10 +58,10 @@ namespace APMFileRead
         /// <param name="asyncResult"></param>
         private static void EndRead(IAsyncResult asyncResult)
         {
-            Console.WriteLine($" Managed Thread Id in endread is : {Thread.CurrentThread.ManagedThreadId}"); //// The managed thread identifier.
+            Console.WriteLine($"Managed Thread Id in endread is : {Thread.CurrentThread.ManagedThreadId}"); //// The managed thread identifier.
             FileStream fs = (FileStream)asyncResult.AsyncState;
             Int32 numBytesRead = fs.EndRead(asyncResult);
-            Console.WriteLine($" Number of bytes - {numBytesRead}");
+            Console.WriteLine($"Number of bytes - {numBytesRead}");
             Console.WriteLine(Encoding.UTF8.GetString(bytes));
             fs.Close();
         }
