@@ -36,13 +36,16 @@ namespace APMFileRead
             //Console.WriteLine($"End reading file, Number of bytes - {numBytesRead}, Elapsed time - {watch.ElapsedMilliseconds}");
             #endregion
 
+            //fs.Close();
+            //Console.WriteLine($"File contents - {Encoding.Default.GetString(bytes)}");
+            watch.Stop();
             #region Async using APM, callback
             fs.BeginRead(bytes, 0, bytes.Length, EndRead, fs);
             Console.WriteLine($" Do something else in main method while reading file, Elapsed time - {watch.ElapsedMilliseconds}");
             #endregion region
-            //fs.Close();
-            watch.Stop();
-            //Console.WriteLine($"File contents - {Encoding.Default.GetString(bytes)}");
+           
+            
+            
             Console.ReadKey();
 
 
