@@ -12,11 +12,11 @@ namespace CPUBoundvsIOBound
             Console.WriteLine("Before I/O bound task");
             Console.WriteLine("===================================");
             AvailableThreads(); //Check number of threads initially
-            await Task.Run(() => GetStocks()); //Call async method
+            await GetStocks(); //Call async method
             Console.WriteLine("After I/O bound task");
             Console.WriteLine("===================================");            
             AvailableThreads(); //Check number of threads       
-            await Task.Run(() => DoExpensiveCalculation()); //Call a method that does CPU intense operation
+            await DoExpensiveCalculation(); //Call a method that does CPU intense operation
             Console.WriteLine("After CPU bound task");
             Console.WriteLine("===================================");
             AvailableThreads(); //Check number of threads       

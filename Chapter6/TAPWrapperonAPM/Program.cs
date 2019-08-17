@@ -9,14 +9,14 @@ namespace TAPWrapperonAPM
 {
     class Program
     {
-        static Byte[] bytes = new Byte[100];
+        static Byte[] bytes = new Byte[8196];
         static CancellationTokenSource cts = new CancellationTokenSource();
         static async Task Main(string[] args)
         {
             Console.WriteLine($"Managed Thread Id in Main is : {Thread.CurrentThread.ManagedThreadId}"); //// The managed thread identifier.            
             Stopwatch watch = new Stopwatch();
             watch.Start();
-            FileStream fs = new FileStream(@"../../../TextFile.txt", FileMode.Open, FileAccess.Read, FileShare.Read, bytes.Length, FileOptions.Asynchronous);
+            FileStream fs = new FileStream(@"../../../TextFile.txt", FileMode.Open, FileAccess.Read, FileShare.Read, bytes.Length, true);
             Console.Write("Enter wait time in seconds before cancelling operation ");
             int waitTime = Convert.ToInt32(Console.ReadLine());
             cts.CancelAfter(waitTime * 1000);
@@ -35,8 +35,14 @@ namespace TAPWrapperonAPM
                 cts = null;
                 fs.Close();
                 Console.WriteLine($"Number of bytes - {numBytesRead}");
+                Console.WriteLine($"File contents - {Encoding.Default.GetString(bytes)}");
             }
             Console.ReadKey();
+        }
+
+        static Task<int> ReadAsync(FileStream fs, byte[] buffer, int offset, int count)
+        {
+            return Task<int>.Factory.FromAsync(fs.BeginRead, fs.EndRead, buffer, offset, count, null);
         }
 
         /// <summary>
@@ -63,17 +69,15 @@ namespace TAPWrapperonAPM
                     {
                         throw new OperationCanceledException();
                     }
-                    taskCompletionSource.TrySetResult(fs.EndRead(iAsyncResult));
+                    var state = iAsyncResult.AsyncState as FileStream;
+                    var read = state.EndRead(iAsyncResult);
+                    taskCompletionSource.TrySetResult(read);
                 }
-                catch (OperationCanceledException)
+                catch (Exception ex)
                 {
-                    taskCompletionSource.TrySetCanceled();
+                    taskCompletionSource.TrySetException(ex);
                 }
-                catch (Exception exc)
-                {
-                    taskCompletionSource.TrySetException(exc);
-                }
-            }, null);
+            }, fs);
             return taskCompletionSource.Task;
         }
     }
