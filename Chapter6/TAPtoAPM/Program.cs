@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace TAPtoAPM
 {
@@ -18,7 +20,7 @@ namespace TAPtoAPM
             {
                 if (watch.ElapsedMilliseconds % 3000 == 0)
                 {
-                    cts.Cancel();
+                    cts.CancelAfter(15000);
                     Console.WriteLine($"Do something else in main method while receiving response from API, Elapsed time - {watch.ElapsedMilliseconds}");
                 }
             }
@@ -76,8 +78,15 @@ namespace TAPtoAPM
             {
                 return ((Task<string>)asyncResult).Result;
             }
-            catch (Exception ex)
+            catch (AggregateException ex)
             {
+                List<Tuple<string, string>> errors = ex.Flatten().InnerExceptions.Select(x => new Tuple<string, string>(x.Message, x.StackTrace)).ToList();
+                int counter = 0;
+                foreach (Tuple<string, string> error in errors)
+                {
+                    counter++;
+                    Console.WriteLine($"{counter}).Error - {error.Item1} \n Innerstack \n {error.Item2} \n");
+                }
                 return $"Exception occured - {ex.Message}";
             }
         }
@@ -102,11 +111,11 @@ namespace TAPtoAPM
         /// <typeparam name="TResult"></typeparam>
         /// <param name="task"></param>
         /// <param name="asyncCallback"></param>
-        /// <param name="objectState"></param>
+        /// <param name="state"></param>
         /// <returns></returns>
-        public static Task<TResult> TAPToApm<TResult>(this Task<TResult> task, AsyncCallback asyncCallback, object objectState)
+        public static IAsyncResult TAPToApm<TResult>(this Task<TResult> task, AsyncCallback asyncCallback, object state)
         {
-            var taskCompletionSource = new TaskCompletionSource<TResult>(objectState);
+            var taskCompletionSource = new TaskCompletionSource<TResult>(state);
 
             task.ContinueWith(delegate
             {
