@@ -10,7 +10,7 @@ namespace TAPtoAPM
 {
     class Program
     {
-        static CancellationTokenSource cts = new CancellationTokenSource();
+        static CancellationTokenSource cts = new CancellationTokenSource();         
         static void Main(string[] args)
         {
             Stopwatch watch = new Stopwatch();
