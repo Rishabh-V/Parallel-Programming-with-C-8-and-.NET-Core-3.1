@@ -21,28 +21,28 @@ namespace EAPCAlculatepi.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        //Calculatepi pi;
+        Calculatepi pi;
         CancellationTokenSource cts = null;
         CalculatepiCompletedEventArgs calculatepiCompletedEventArgs = null;
         public MainWindow()
         {
             InitializeComponent();
-            //pi = new Calculatepi();
-            //pi.CalculatepiCompleted += new CalculatepiCompletedEventHandler(Pi_CalculatePrimeCompleted);
+            pi = new Calculatepi();
+            pi.CalculatepiCompleted += new CalculatepiCompletedEventHandler(Pi_CalculatePrimeCompleted);
         }
 
         private void Calculatepi1000_Click(object sender, RoutedEventArgs e)
         {
-            //if (calculatepi1000.Content.ToString().Contains("pi"))
-            //{
-            //    calculatepi1000.Content = "Cancel";
-            //    pi.CalculatepiAsync(1000, sender, "Calculate pi (1000)");
-            //}
-            //else
-            //{
-            //    pi.CancelAsync("Calculate pi (1000)");
-            //    calculatepi1000.Content = "Calculate pi (1000)";
-            //}
+            if (calculatepi1000.Content.ToString().Contains("pi"))
+            {
+                calculatepi1000.Content = "Cancel";
+                pi.CalculatepiAsync(1000, sender, "Calculate pi (1000)");
+            }
+            else
+            {
+                pi.CancelAsync("Calculate pi (1000)");
+                calculatepi1000.Content = "Calculate pi (1000)";
+            }
         }
 
         void Pi_CalculatePrimeCompleted(object sender, CalculatepiCompletedEventArgs e)
@@ -60,16 +60,16 @@ namespace EAPCAlculatepi.WPF
 
         private void Calculatepi900_Click(object sender, RoutedEventArgs e)
         {
-            //if (calculatepi900.Content.ToString().Contains("pi"))
-            //{
-            //    calculatepi900.Content = "Cancel";
-            //    pi.CalculatepiAsync(900, sender, "Calculate pi (900)");
-            //}
-            //else
-            //{
-            //    pi.CancelAsync("Calculate pi (900)");
-            //    calculatepi900.Content = "Calculate pi (900)";
-            //}
+            if (calculatepi900.Content.ToString().Contains("pi"))
+            {
+                calculatepi900.Content = "Cancel";
+                pi.CalculatepiAsync(900, sender, "Calculate pi (900)");
+            }
+            else
+            {
+                pi.CancelAsync("Calculate pi (900)");
+                calculatepi900.Content = "Calculate pi (900)";
+            }
         }
 
         private async void Calculatepi1000TAP_Click(object sender, RoutedEventArgs e)
