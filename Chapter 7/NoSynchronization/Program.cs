@@ -9,7 +9,7 @@ namespace NoSynchronization
         {
             BankAccount bankAccount = new BankAccount(0);
             Console.WriteLine($"Initial Balance {bankAccount.ShowBalance()}");
-            await bankAccount.AddMoneyToAccount();
+            await bankAccount.AddMoneyToAccountAsync();
             Console.WriteLine($"Current Balance {bankAccount.ShowBalance()}, total number of transactions - {bankAccount.NumberOfTransactions}");
             Console.Read();
         }

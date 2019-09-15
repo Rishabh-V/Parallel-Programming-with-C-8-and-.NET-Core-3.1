@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Diagnostics.Runtime;
 
 namespace NoSynchronization
 {
@@ -31,7 +34,7 @@ namespace NoSynchronization
         /// <summary>
         /// Add money to account through multiple transactions
         /// </summary>        
-        public async Task AddMoneyToAccount()
+        public async Task AddMoneyToAccountAsync()
         {
             var tasks = new Task[50];
 
@@ -39,7 +42,7 @@ namespace NoSynchronization
             {
                 tasks[i - 1] = AddBalanceToAcccount(i);
             }
-
+            
             await Task.WhenAll(tasks);
         }
 
