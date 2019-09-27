@@ -24,7 +24,7 @@ namespace NoSynchronization
 
         //Lock
         object locker = new object();
-        bool isAcquired = false;
+        SpinLock spinLock = new SpinLock();
 
         public BankAccount(long initialAccountBalance)
         {
@@ -37,7 +37,9 @@ namespace NoSynchronization
         /// </summary>        
         public async Task AddMoneyToAccountAsync()
         {
-            var tasks = new Task[50];
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            var tasks = new Task[99999];
              for (int i = 1; i <= tasks.Length; i++)
                 {
                     tasks[i - 1] = AddBalanceToAcccount(i);
@@ -49,6 +51,7 @@ namespace NoSynchronization
             //    Console.WriteLine(tasks[i - 1].Status);
             //}
            await Task.WhenAll(tasks);
+            Console.WriteLine($"Time taken - {timer.ElapsedMilliseconds}");
         }
 
         public long ShowBalance()
@@ -73,6 +76,7 @@ namespace NoSynchronization
             try
             {
                 Monitor.Enter(locker, ref lockAcquired);
+                //spinLock.Enter(ref lockAcquired);
                 //modifiedamount = amount / (amount - 20);
                 accountBalance = accountBalance + amount;
                 numberOfTransactions = numberOfTransactions + 1;
@@ -82,9 +86,9 @@ namespace NoSynchronization
                 if (lockAcquired)
                 {
                     Monitor.Exit(locker);
+                    //spinLock.Exit();
                 }
             }
-
         }
 
         void AvailableThreads()
