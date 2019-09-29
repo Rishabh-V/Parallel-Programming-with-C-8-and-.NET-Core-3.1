@@ -81,7 +81,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAPCAlculatepi.WPF", "Chapt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoSynchronization", "Chapter 7\NoSynchronization\NoSynchronization.csproj", "{2218F5DC-122C-40A5-A68D-97DC0384580F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileUploadMutex", "Chapter 7\FileUploadMutex\FileUploadMutex.csproj", "{4D2FC8D0-4C35-4EC6-86BD-1F5710188295}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileUploadMutex", "Chapter 7\FileUploadMutex\FileUploadMutex.csproj", "{4D2FC8D0-4C35-4EC6-86BD-1F5710188295}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateWaterUsingSemaphore", "Chapter 7\CreateWaterUsingSemaphore\CreateWaterUsingSemaphore.csproj", "{374BD877-F1B5-4F99-B3FF-6594C2F6C228}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -189,6 +191,10 @@ Global
 		{4D2FC8D0-4C35-4EC6-86BD-1F5710188295}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D2FC8D0-4C35-4EC6-86BD-1F5710188295}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D2FC8D0-4C35-4EC6-86BD-1F5710188295}.Release|Any CPU.Build.0 = Release|Any CPU
+		{374BD877-F1B5-4F99-B3FF-6594C2F6C228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{374BD877-F1B5-4F99-B3FF-6594C2F6C228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{374BD877-F1B5-4F99-B3FF-6594C2F6C228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{374BD877-F1B5-4F99-B3FF-6594C2F6C228}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -219,6 +225,7 @@ Global
 		{AAD1713B-64F4-4515-8D6E-2D7E8E76FD34} = {FE7C9750-86DD-4889-A9B8-481A0D1554E3}
 		{2218F5DC-122C-40A5-A68D-97DC0384580F} = {9D6E0788-822F-482B-8582-50128D043EC5}
 		{4D2FC8D0-4C35-4EC6-86BD-1F5710188295} = {9D6E0788-822F-482B-8582-50128D043EC5}
+		{374BD877-F1B5-4F99-B3FF-6594C2F6C228} = {9D6E0788-822F-482B-8582-50128D043EC5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54A25E92-EC1C-4C57-8E8D-E9EDEFD0BC64}
