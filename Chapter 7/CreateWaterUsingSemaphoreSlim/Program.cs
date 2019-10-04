@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace CreateWaterUsingSemaphore
+namespace CreateWaterUsingSemaphoreSlim
 {
     class Program
     {
@@ -17,6 +17,5 @@ namespace CreateWaterUsingSemaphore
                 await water.BuildWaterAsync(input);
             }
         }
-
     }
 }

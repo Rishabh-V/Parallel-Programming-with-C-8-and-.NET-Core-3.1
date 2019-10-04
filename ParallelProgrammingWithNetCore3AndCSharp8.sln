@@ -83,7 +83,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoSynchronization", "Chapte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileUploadMutex", "Chapter 7\FileUploadMutex\FileUploadMutex.csproj", "{4D2FC8D0-4C35-4EC6-86BD-1F5710188295}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateWaterUsingSemaphore", "Chapter 7\CreateWaterUsingSemaphore\CreateWaterUsingSemaphore.csproj", "{374BD877-F1B5-4F99-B3FF-6594C2F6C228}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreateWaterUsingSemaphore", "Chapter 7\CreateWaterUsingSemaphore\CreateWaterUsingSemaphore.csproj", "{374BD877-F1B5-4F99-B3FF-6594C2F6C228}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateWaterUsingSemaphoreSlim", "Chapter 7\CreateWaterUsingSemaphoreSlim\CreateWaterUsingSemaphoreSlim.csproj", "{B51FBE85-47AE-4295-BFA9-33143FE7ECEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -195,6 +197,10 @@ Global
 		{374BD877-F1B5-4F99-B3FF-6594C2F6C228}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{374BD877-F1B5-4F99-B3FF-6594C2F6C228}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{374BD877-F1B5-4F99-B3FF-6594C2F6C228}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B51FBE85-47AE-4295-BFA9-33143FE7ECEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B51FBE85-47AE-4295-BFA9-33143FE7ECEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B51FBE85-47AE-4295-BFA9-33143FE7ECEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B51FBE85-47AE-4295-BFA9-33143FE7ECEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -226,6 +232,7 @@ Global
 		{2218F5DC-122C-40A5-A68D-97DC0384580F} = {9D6E0788-822F-482B-8582-50128D043EC5}
 		{4D2FC8D0-4C35-4EC6-86BD-1F5710188295} = {9D6E0788-822F-482B-8582-50128D043EC5}
 		{374BD877-F1B5-4F99-B3FF-6594C2F6C228} = {9D6E0788-822F-482B-8582-50128D043EC5}
+		{B51FBE85-47AE-4295-BFA9-33143FE7ECEC} = {9D6E0788-822F-482B-8582-50128D043EC5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54A25E92-EC1C-4C57-8E8D-E9EDEFD0BC64}

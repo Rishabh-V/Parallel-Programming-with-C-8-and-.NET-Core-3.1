@@ -4,12 +4,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CreateWaterUsingSemaphore
+namespace CreateWaterUsingSemaphoreSlim
 {
     public class Water
     {
-        Semaphore semaphoreH = new Semaphore(2, 2);
-        Semaphore semaphoreO = new Semaphore(0, 1);
+        SemaphoreSlim semaphoreH = new SemaphoreSlim(2, 2);
+        SemaphoreSlim semaphoreO = new SemaphoreSlim(0, 1);
 
         void ReleaseHydrogen()
         {
@@ -25,9 +25,12 @@ namespace CreateWaterUsingSemaphore
 
         public async Task HThread(Action releaseH)
         {
-            await Task.Delay(1);
+            if (semaphoreH.CurrentCount == 0 && semaphoreO.CurrentCount == 1)
+            {
+                Console.WriteLine("Hydrogen is ready, waiting for Oxygen");
+            }
             //Wait on Hydrogen thread, code after this will be blocked after processing two Hydrogen threads until one Oxygen thread is processed
-            semaphoreH.WaitOne();
+            await semaphoreH.WaitAsync();
 
             releaseH();
 
@@ -40,10 +43,13 @@ namespace CreateWaterUsingSemaphore
 
         public async Task OThread(Action releaseO)
         {
-            await Task.Delay(1);
+            if (semaphoreH.CurrentCount > 0 && semaphoreO.CurrentCount == 0)
+            {
+                Console.WriteLine("Oxygen is ready, waiting for Hydrogen");
+            }
             //Locking on Oxygen semaphore, this will allow to be processed only when 2 Hydrogen threads are processed or else will wait. 
             //Code after this is blocked until two Hydrogen threads are processed as initial concurrent threads for Oxygen semaphore is 0 (first parameter)
-            semaphoreO.WaitOne();
+            await semaphoreO.WaitAsync();
 
             releaseO();
 
