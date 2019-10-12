@@ -89,7 +89,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreateWaterUsingSemaphoreSl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileWriteUsingReaderWriterLock", "Chapter 7\FileWriteUsingReaderWriterLock\FileWriteUsingReaderWriterLock.csproj", "{14E95080-5788-4C28-9685-C2EC7E4F05FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTradingUsingAutoResetEvent", "Chapter 7\StockTradingUsingAutoResetEvent\StockTradingUsingAutoResetEvent.csproj", "{C2BE5F38-90A4-43C3-8A77-598BB7891A3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockTradingUsingAutoResetEvent", "Chapter 7\StockTradingUsingAutoResetEvent\StockTradingUsingAutoResetEvent.csproj", "{C2BE5F38-90A4-43C3-8A77-598BB7891A3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTradingUsingManualResetEvent", "Chapter 7\StockTradingUsingManualResetEvent\StockTradingUsingManualResetEvent.csproj", "{AF193896-48CB-4D05-AFD6-1EFFF24209B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -213,6 +215,10 @@ Global
 		{C2BE5F38-90A4-43C3-8A77-598BB7891A3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2BE5F38-90A4-43C3-8A77-598BB7891A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2BE5F38-90A4-43C3-8A77-598BB7891A3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF193896-48CB-4D05-AFD6-1EFFF24209B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF193896-48CB-4D05-AFD6-1EFFF24209B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF193896-48CB-4D05-AFD6-1EFFF24209B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF193896-48CB-4D05-AFD6-1EFFF24209B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -247,6 +253,7 @@ Global
 		{B51FBE85-47AE-4295-BFA9-33143FE7ECEC} = {9D6E0788-822F-482B-8582-50128D043EC5}
 		{14E95080-5788-4C28-9685-C2EC7E4F05FA} = {9D6E0788-822F-482B-8582-50128D043EC5}
 		{C2BE5F38-90A4-43C3-8A77-598BB7891A3A} = {9D6E0788-822F-482B-8582-50128D043EC5}
+		{AF193896-48CB-4D05-AFD6-1EFFF24209B5} = {9D6E0788-822F-482B-8582-50128D043EC5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54A25E92-EC1C-4C57-8E8D-E9EDEFD0BC64}
