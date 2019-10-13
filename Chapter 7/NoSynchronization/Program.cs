@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace NoSynchronization
 {
@@ -9,7 +11,7 @@ namespace NoSynchronization
         {
             BankAccount bankAccount = new BankAccount(0);
             Console.WriteLine($"Initial Balance {bankAccount.ShowBalance()}");
-            await bankAccount.AddMoneyToAccountAsync();
+            await bankAccount.AddMoneyToAccountAsync();            
             Console.WriteLine($"Current Balance {bankAccount.ShowBalance()}, total number of transactions - {bankAccount.NumberOfTransactions}");
             Console.Read();
         }
