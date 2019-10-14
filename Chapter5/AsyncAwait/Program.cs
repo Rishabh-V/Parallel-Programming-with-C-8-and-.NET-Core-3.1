@@ -37,25 +37,49 @@ namespace AsyncAwait
         private static async Task DownloadDataAsync(string url, string path)
         {
             // Create a new web client object
-            using (WebClient client = new WebClient()) //1
-            {
-                // Add user-agent header to avoid forbidden errors.
-                client.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; WOW64)"); //2
-                // download data from Url
-                // Uncomment below code to see that this is running in Main thread
-                //await DoNothingAsync();
-                //Console.WriteLine("2 - ThreadId " + Thread.CurrentThread.ManagedThreadId);
-                byte[] data = await client.DownloadDataTaskAsync(url); //3
-                //Console.WriteLine("2 - ThreadId " + Thread.CurrentThread.ManagedThreadId);
-                // Write data in file.
-                using (var fileStream = File.OpenWrite(path)) //4
-                {
-                    //Console.WriteLine("3 - ThreadId " + Thread.CurrentThread.ManagedThreadId);
-                    await fileStream.WriteAsync(data, 0, data.Length); //5
-                    //Console.WriteLine("3 - ThreadId " + Thread.CurrentThread.ManagedThreadId);
-                }
-            }
+            using WebClient client = new WebClient();  // C# 8 feature.
+            // Add user-agent header to avoid forbidden errors.
+            client.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; WOW64)"); //2
+            // download data from Url
+            // Uncomment below code to see that this is running in Main thread
+            //await DoNothingAsync();
+            //Console.WriteLine("2 - ThreadId " + Thread.CurrentThread.ManagedThreadId);
+            byte[] data = await client.DownloadDataTaskAsync(url); //3
+            //Console.WriteLine("2 - ThreadId " + Thread.CurrentThread.ManagedThreadId);
+            // Write data in file.
+            using var fileStream = File.OpenWrite(path);
+            //Console.WriteLine("3 - ThreadId " + Thread.CurrentThread.ManagedThreadId);
+            await fileStream.WriteAsync(data, 0, data.Length); //5
         }
+
+        #region Understanding under the hood
+
+        //private static Task DownloadDataAsync(string url, string path)
+        //{
+        //    // Create a new web client object
+        //    using (WebClient client = new WebClient())
+        //    {
+        //        client.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; WOW64)");
+        //        // download data from Url
+        //        var task = client.DownloadDataTaskAsync(url);
+        //        return task.ContinueWith((t) =>
+        //        {
+        //            byte[] data = task.Result;
+        //            using (var fileStream = File.OpenWrite(path))
+        //            {
+        //                var task2 = fileStream.WriteAsync(data, 0, data.Length);
+        //                return task2.ContinueWith((q) =>
+        //                {
+        //                    // Any other code to continue. Doesn't exist in this case.
+        //                    return;
+        //                });
+        //            }
+        //        });
+        //    }
+        //}
+
+
+        #endregion
 
         private static async Task DoNothingAsync()
         {
