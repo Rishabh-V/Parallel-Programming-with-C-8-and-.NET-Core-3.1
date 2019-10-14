@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Threading;
@@ -30,6 +31,13 @@ namespace AsyncAwait
             //Console.WriteLine("1 - ThreadId " + Thread.CurrentThread.ManagedThreadId);
             await DownloadDataAsync(url, path);
             //Console.WriteLine("1 - ThreadId " + Thread.CurrentThread.ManagedThreadId);
+            
+            // Async Streams demo
+            await PrintAuthorNamesAsync();
+
+            // ValueTask Demo
+            await DownloadByteDataAsync(url); 
+            
             // Prevent the program from exiting unless you press enter.
             Console.ReadLine();
         }
@@ -51,9 +59,48 @@ namespace AsyncAwait
             //Console.WriteLine("3 - ThreadId " + Thread.CurrentThread.ManagedThreadId);
             await fileStream.WriteAsync(data, 0, data.Length); //5
         }
+            
+        private static async Task PrintAuthorNamesAsync()
+        {
+            // await foreach - Async stream makes it possible.
+            await foreach (var item in GetAuthorNamesAsync())
+            {
+                Console.WriteLine(item);
+            }
+        }
 
-        #region Understanding under the hood
+        private static async IAsyncEnumerable<string> GetAuthorNamesAsync()
+        {
+            // This dictionary is just to give a demo. 
+            // In normal scenarios, we would just have ids for which names would be fetched from database.
+            Dictionary<int, string> authorIdNameMappings = new Dictionary<int, string>() { { 1, "Rishabh" }, { 2, "Neha" }, { 3, "Ravindra" } };
 
+            foreach (var id in authorIdNameMappings.Keys)
+            {
+                //// Simulate Getting name from Web API or network by inserting delay.
+                await Task.Delay(300);
+                //yield return the detched data
+                yield return authorIdNameMappings[id];
+            }
+        }
+                              
+        // ValueTask Demo.
+        private static async ValueTask<byte[]> DownloadByteDataAsync(string url)
+        {   
+            if(string.IsNullOrWhiteSpace(url))
+            {
+                return default;
+            }
+
+            // Create a new web client object
+            using WebClient client = new WebClient();  // C# 8 feature.
+            // Add user-agent header to avoid forbidden errors.
+            client.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; WOW64)");
+            // download data from Url           
+            return await client.DownloadDataTaskAsync(url);
+        }
+
+        #region Understanding under the hood 
         //private static Task DownloadDataAsync(string url, string path)
         //{
         //    // Create a new web client object
