@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,20 +25,24 @@ namespace FileIO
             string url = "https://github.com/Ravindra-a/largefile/blob/master/README.md"; //Replace this with any URL
             using (HttpResponseMessage response = await _client.GetAsync(url)) // Should mock GetAsync for unit tests
             {
-                response.EnsureSuccessStatusCode();
-                string result = await response.Content.ReadAsStringAsync();
-                if (string.IsNullOrWhiteSpace(result))
+                if (response.IsSuccessStatusCode)
                 {
-                    throw new Exception("Empty file content");
-                }
+                    string result = await response.Content.ReadAsStringAsync();
 
-                // Now reverse this string - In enterprise appication this will be some business logic
-                StringBuilder reverseString = new StringBuilder();
-                for (int i= result.Length - 1; i>=0;i--)
-                {
-                    reverseString.Append(result[i]);
+
+                    // Now reverse this string - In enterprise appication this will be some business logic
+                    StringBuilder reverseString = new StringBuilder();
+                    for (int i = result.Length - 1; i >= 0; i--)
+                    {
+                        reverseString.Append(result[i]);
+                    }
+                    return reverseString.ToString();
                 }
-                return reverseString.ToString();
+                else if (response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    throw new FileNotFoundException();
+                }
+                throw new Exception(); //For all other stauts codes
             }
         }
     }
