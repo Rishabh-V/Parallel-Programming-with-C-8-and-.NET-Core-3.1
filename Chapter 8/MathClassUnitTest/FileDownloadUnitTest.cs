@@ -18,8 +18,11 @@ namespace CalculatorUnitTest
             var mathClass = new FileIO.FileDownload(httpClient);
             string expectedResult = "Response from fake httpclient";
 
+            char[] charArray = expectedResult.ToCharArray();
+            Array.Reverse(charArray);
+
             var result = await mathClass.DownloadFileAsync();
-            Assert.Equal(expectedResult, result);
+            Assert.Equal(new string(charArray), result);
         }
     }
 
