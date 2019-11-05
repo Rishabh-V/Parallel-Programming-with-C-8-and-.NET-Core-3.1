@@ -25,7 +25,7 @@ namespace Calculator
             }
         }
 
-        public async Task<int> DivideAsync(int numerator, int denominator)
+        public async Task<int> DivideAsync(int numerator, int? denominator)
         {
             try
             {
@@ -41,27 +41,5 @@ namespace Calculator
                 throw;
             }
         }
-
-        private async Task DownloadLargeFilAsync()
-        {
-            byte[] buffer = new byte[8192];
-            using (HttpClient client = new HttpClient())
-            {
-
-                string url = "https://github.com/Ravindra-a/largefile/archive/master.zip";
-                using (HttpResponseMessage response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead))
-                {
-                    response.EnsureSuccessStatusCode();
-                    long totalLength = response.Content.Headers.ContentLength.HasValue ? response.Content.Headers.ContentLength.Value : 34632982; //Once in a while github returns response without content length header 
-                    //hence in that case defaulting to actual file size
-                    using (Stream stream = await response.Content.ReadAsStreamAsync())
-                    {
-                            int dataToRead = await stream.ReadAsync(buffer, 0, buffer.Length);
-                    }
-                }
-            }
-        }
-
-
     }
 }

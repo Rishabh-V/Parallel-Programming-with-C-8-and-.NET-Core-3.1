@@ -101,6 +101,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Chapter 8\Mat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorUnitTest", "Chapter 8\MathClassUnitTest\CalculatorUnitTest.csproj", "{3254DC10-5D2F-4466-B5D4-1D5905607F7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileIO", "Chapter 8\FileIO\FileIO.csproj", "{D5CFFF65-C461-4853-9555-BF7CDC129ABA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -243,6 +245,10 @@ Global
 		{3254DC10-5D2F-4466-B5D4-1D5905607F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3254DC10-5D2F-4466-B5D4-1D5905607F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3254DC10-5D2F-4466-B5D4-1D5905607F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5CFFF65-C461-4853-9555-BF7CDC129ABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5CFFF65-C461-4853-9555-BF7CDC129ABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5CFFF65-C461-4853-9555-BF7CDC129ABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5CFFF65-C461-4853-9555-BF7CDC129ABA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -282,6 +288,7 @@ Global
 		{C8254CAB-A694-42DB-83A8-87AAFFF71EB3} = {9D6E0788-822F-482B-8582-50128D043EC5}
 		{16C5CCF3-E22E-40F9-A715-D168538F3CA2} = {586A1C13-A717-4491-BFEF-006A409A5BAA}
 		{3254DC10-5D2F-4466-B5D4-1D5905607F7D} = {586A1C13-A717-4491-BFEF-006A409A5BAA}
+		{D5CFFF65-C461-4853-9555-BF7CDC129ABA} = {586A1C13-A717-4491-BFEF-006A409A5BAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54A25E92-EC1C-4C57-8E8D-E9EDEFD0BC64}
