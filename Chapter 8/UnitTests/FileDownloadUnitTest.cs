@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using FileIO;
 
-namespace CalculatorUnitTest
+namespace UnitTests
 {
     public class FileDownloadUnitTest
     {
@@ -22,14 +21,14 @@ namespace CalculatorUnitTest
             };
             var msgeHandler = new FakeHttpMsgHandler(mockResponse);
             var httpClient = new HttpClient(msgeHandler);
-            var mathClass = new FileIO.FileDownload(httpClient);
+            var fileDownloadObj = new FileIO.FileDownload(httpClient);
 
             string expectedResult = "Response from fake httpclient";
             //string reversal logic
             char[] charArray = expectedResult.ToCharArray();
             Array.Reverse(charArray);
             //Call to method
-            var result = await mathClass.DownloadFileAsync();
+            var result = await fileDownloadObj.DownloadFileAsync();
             Assert.Equal(charArray.Length, result.Length);//assertion
             Assert.Equal(new string(charArray), result);//assertion            
         }
@@ -44,9 +43,9 @@ namespace CalculatorUnitTest
             };
             var msgeHandler = new FakeHttpMsgHandler(mockResponse);
             var httpClient = new HttpClient(msgeHandler);
-            var mathClass = new FileIO.FileDownload(httpClient);
+            var fileDownloadObj = new FileDownload(httpClient);
 
-            var result = mathClass.DownloadFileAsync();
+            var result = fileDownloadObj.DownloadFileAsync();
             await Assert.ThrowsAsync<FileNotFoundException>(async () => await result);
         }
     }

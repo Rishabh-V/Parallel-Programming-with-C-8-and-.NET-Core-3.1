@@ -1,4 +1,4 @@
-﻿namespace CalculatorUnitTest
+﻿namespace UnitTests
 {
     using Calculator;
     using System;
@@ -46,6 +46,5 @@
             var result = mathClass.DivideAsync(6, null);
             await Assert.ThrowsAnyAsync<Exception>(async () => await result);
         }
-
     }
 }
