@@ -99,8 +99,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeLoanVerificationSimulat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator", "Chapter 8\MathClass\Calculator.csproj", "{16C5CCF3-E22E-40F9-A715-D168538F3CA2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorUnitTest", "Chapter 8\MathClassUnitTest\CalculatorUnitTest.csproj", "{3254DC10-5D2F-4466-B5D4-1D5905607F7D}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileIO", "Chapter 8\FileIO\FileIO.csproj", "{D5CFFF65-C461-4853-9555-BF7CDC129ABA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DebuggingPrimer", "Chapter9\WriteToOutputWindow\DebuggingPrimer.csproj", "{386184CD-F979-4E94-843B-2EF681C0E494}"
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "Chapter 8\UnitTests\UnitTests.csproj", "{097D16E3-257E-412B-B7F5-C9F7F7D6526D}"
 EndProject
 Global
