@@ -12,11 +12,11 @@ namespace CPUBoundvsIOBound
             Console.WriteLine("Before I/O bound task");
             Console.WriteLine("===================================");
             AvailableThreads(); //Check number of threads initially
-            await GetStocks(); //Call async method
+            await GetStocksAsync(); //Call async method
             Console.WriteLine("After I/O bound task");
             Console.WriteLine("===================================");            
             AvailableThreads(); //Check number of threads       
-            await DoExpensiveCalculation(); //Call a method that does CPU intense operation
+            await DoExpensiveCalculationAsync(); //Call a method that does CPU intense operation
             Console.WriteLine("After CPU bound task");
             Console.WriteLine("===================================");
             AvailableThreads(); //Check number of threads       
@@ -40,7 +40,7 @@ namespace CPUBoundvsIOBound
         /// Async method to retrieve data from API
         /// </summary>
         /// <returns></returns>
-        static async Task GetStocks()
+        static async Task GetStocksAsync()
         {
             using (HttpClient client = new HttpClient())
             {
@@ -62,7 +62,7 @@ namespace CPUBoundvsIOBound
         /// Method performing hig CPU intense calculation
         /// </summary>
         /// <returns></returns>
-        static async Task<double> DoExpensiveCalculation()
+        static async Task<double> DoExpensiveCalculationAsync()
         {
             Console.WriteLine("Start CPU Bound asynchronous task");
             float calculation = 0;

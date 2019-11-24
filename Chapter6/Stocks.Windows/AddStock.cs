@@ -28,6 +28,7 @@ namespace Stocks.Windows
         /// <param name="e"></param>
         private async void SaveStock_Click(object sender, EventArgs e)
         {
+            bool exceptionOccured = false;
             errorMessage.Text = "";
             #region asycn void            
             try
@@ -36,6 +37,7 @@ namespace Stocks.Windows
             }
             catch (Exception ex)
             {
+                exceptionOccured = true;
                 //This is never caught
                 errorMessage.Text = $"Exception occured in SaveDataAsyncVoid method - {ex.Message} \n Innerstack \n {ex.StackTrace}";
             }
@@ -47,7 +49,8 @@ namespace Stocks.Windows
                 setStockVolume.Text = "";
             }
             #endregion
-            errorMessage.Text = $"SaveStock_Click completed";
+            if (!exceptionOccured)
+                errorMessage.Text = $"SaveStock_Click completed";
         }
 
         /// <summary>
