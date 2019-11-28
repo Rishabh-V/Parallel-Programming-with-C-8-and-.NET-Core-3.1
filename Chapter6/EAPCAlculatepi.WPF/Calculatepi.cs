@@ -39,7 +39,7 @@ namespace EAPCAlculatepi.WPF
             }
         }
 
-        //Dicstionary to handle multiple tasks innovcation, uniquely identify each opearation as one dictionary element
+        //Dictionary to handle multiple tasks invocation, uniquely identify each opearation as one dictionary element
         private HybridDictionary parallelTasks = new HybridDictionary();
 
         /// <summary>
@@ -75,6 +75,7 @@ namespace EAPCAlculatepi.WPF
             timer.Start();
             numsteps++;
 
+            //Variables used in calculation of Pi
             uint[] value = new uint[numsteps * 10 / 3 + 2];
             uint[] rem = new uint[numsteps * 10 / 3 + 2];
 
@@ -85,6 +86,7 @@ namespace EAPCAlculatepi.WPF
 
             for (int i = 0; i < numsteps; i++)
             {
+                //Cancel and exit if cancellation is triggered
                 Thread.Sleep(5);
                 if (TaskCanceled(asyncOp.UserSuppliedState))
                 {
@@ -95,19 +97,13 @@ namespace EAPCAlculatepi.WPF
                 {
                     uint number = (uint)(value.Length - j - 1);
                     uint pow = number * 2 + 1;
-
                     value[j] += carryForward;
-
                     uint quotient = value[j] / pow;
                     rem[j] = value[j] % pow;
-
                     carryForward = quotient * number;
                 }
 
-
                 pi[i] = (value[value.Length - 1] / 10);
-
-
                 rem[value.Length - 1] = value[value.Length - 1] % 10; ;
 
                 for (int j = 0; j < value.Length; j++)
@@ -128,7 +124,7 @@ namespace EAPCAlculatepi.WPF
             result = result.Substring(0, 1) + "." + result.Substring(1, result.Length - 1);
 
 
-            //rasie callback
+            //raise callback
             CalculatepiCompletedEventArgs e = new CalculatepiCompletedEventArgs(result, timer.ElapsedMilliseconds, sender, null, TaskCanceled(asyncOp.UserSuppliedState), asyncOp.UserSuppliedState);
             asyncOp.PostOperationCompleted(onCompletedDelegate, e);
 
@@ -164,9 +160,7 @@ namespace EAPCAlculatepi.WPF
     {
         public string Result { get; private set; }
         public long TimeTaken { get; private set; }
-
         public Object Sender { get; private set; }
-
         public CalculatepiCompletedEventArgs(string value, long TimeTaken, object sender, Exception e, bool canceled, object state) : base(e, canceled, state)
         {
             this.Result = value;

@@ -28,7 +28,7 @@ namespace EAPCAlculatepi.WPF
         {
             InitializeComponent();
             pi = new Calculatepi();
-            pi.CalculatepiCompleted += new CalculatepiCompletedEventHandler(Pi_CalculatePrimeCompleted);
+            pi.CalculatepiCompleted += new CalculatepiCompletedEventHandler(Pi_CalculatePiCompleted);
         }
 
         private void Calculatepi1000_Click(object sender, RoutedEventArgs e)
@@ -45,7 +45,7 @@ namespace EAPCAlculatepi.WPF
             }
         }
 
-        void Pi_CalculatePrimeCompleted(object sender, CalculatepiCompletedEventArgs e)
+        void Pi_CalculatePiCompleted(object sender, CalculatepiCompletedEventArgs e)
         {
             if (!e.Cancelled)
             {

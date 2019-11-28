@@ -37,8 +37,7 @@ namespace Stocks.Windows
             }
             catch (Exception ex)
             {
-                exceptionOccured = true;
-                //This is never caught
+                exceptionOccured = true;                
                 errorMessage.Text = $"Exception occured in SaveDataAsyncVoid method - {ex.Message} \n Innerstack \n {ex.StackTrace}";
             }
             finally

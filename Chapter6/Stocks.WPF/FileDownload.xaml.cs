@@ -205,26 +205,6 @@ namespace Stocks.WPF
                 totalTimeTaken1.Content = "Download largefile1.zip completed";
             }
         }
-
-        private void Pause_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Resume1_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Resume_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Pause1_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 
     public class ProgreesReport

@@ -39,7 +39,7 @@ namespace EAPCalculatepi
             }
         }
 
-        //Dicstionary to handle multiple tasks innovcation, uniquely identify each opearation as one dictionary element
+        //Dictionary to handle multiple tasks invocation, uniquely identify each operation as one dictionary element
         private HybridDictionary parallelTasks = new HybridDictionary();
 
         /// <summary>
@@ -75,6 +75,7 @@ namespace EAPCalculatepi
             timer.Start();
             numsteps++;
 
+            //Variables used in calculation of Pi
             uint[] value = new uint[numsteps * 10 / 3 + 2];
             uint[] rem = new uint[numsteps * 10 / 3 + 2];
 
@@ -83,6 +84,7 @@ namespace EAPCalculatepi
             for (int j = 0; j < value.Length; j++)
                 value[j] = 20;
 
+            //Simple looping logic to calculate Pi till the number of characters passed as input
             for (int i = 0; i < numsteps; i++)
             {
                 uint carryForward = 0;
@@ -129,8 +131,8 @@ namespace EAPCalculatepi
                 parallelTasks.Remove(asyncOp.UserSuppliedState);
             }
 
-            //rasie callback
-            CalculatepiCompletedEventArgs e = new CalculatepiCompletedEventArgs(result, timer.ElapsedMilliseconds, null, false, asyncOp.UserSuppliedState);
+            //raise callback
+            CalculatepiCompletedEventArgs e = new CalculatepiCompletedEventArgs(result, timer.ElapsedMilliseconds, null, null, false, asyncOp.UserSuppliedState);
             asyncOp.PostOperationCompleted(onCompletedDelegate, e);
             timer.Stop();
         }
@@ -140,11 +142,12 @@ namespace EAPCalculatepi
     {
         public string Result { get; private set; }
         public long TimeTaken { get; private set; }
-
-        public CalculatepiCompletedEventArgs(string value, long TimeTaken, Exception e, bool canceled, object state) : base(e, canceled, state)
+        public Object Sender { get; private set; }
+        public CalculatepiCompletedEventArgs(string value, long TimeTaken, object sender, Exception e, bool canceled, object state) : base(e, canceled, state)
         {
             this.Result = value;
             this.TimeTaken = TimeTaken;
+            this.Sender = sender;
         }
     }
 }

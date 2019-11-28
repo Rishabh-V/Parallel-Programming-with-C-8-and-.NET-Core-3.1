@@ -35,7 +35,7 @@ namespace TAPWrapperonAPM
                 cts = null;
                 fs.Close();
                 Console.WriteLine($"Number of bytes - {numBytesRead}");
-                Console.WriteLine($"File contents - {Encoding.Default.GetString(bytes)}");
+                //Console.WriteLine($"File contents - {Encoding.Default.GetString(bytes)}");
             }
             Console.ReadKey();
         }
