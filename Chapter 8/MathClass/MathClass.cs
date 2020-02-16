@@ -15,7 +15,7 @@ namespace Calculator
             }
             else if (!denominator.HasValue)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(); 
             }
             else
             {
