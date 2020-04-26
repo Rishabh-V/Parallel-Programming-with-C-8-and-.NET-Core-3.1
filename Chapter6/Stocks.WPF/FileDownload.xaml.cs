@@ -57,7 +57,7 @@ namespace Stocks.WPF
             cts = new CancellationTokenSource();
 
             //Progress reporting
-            var progress = new Progress<ProgreesReport>(percent =>
+            var progress = new Progress<ProgressReport>(percent =>
             {
                 taskProgress.Value = percent.progressPercentage;
                 logs.Text += $"{percent.bytesToRead}/{percent.totalBytes} downloaded!!{Environment.NewLine}";
@@ -101,7 +101,7 @@ namespace Stocks.WPF
         /// <param name="token">Cancellation token</param>
         /// <param name="progress">Progress reporting</param>
         /// <returns></returns>
-        private async Task DownloadLargeFilAsync(string fileToDownload, string fileName, CancellationToken token, IProgress<ProgreesReport> progress = null)
+        private async Task DownloadLargeFilAsync(string fileToDownload, string fileName, CancellationToken token, IProgress<ProgressReport> progress = null)
         {
             var ticker = new Stopwatch();
             ticker.Start();
@@ -136,7 +136,7 @@ namespace Stocks.WPF
                                 {
                                     if (((bytes * 100) / totalLength) % 5 == 0) //reporting progress for every 5%
                                     {
-                                        progress.Report(new ProgreesReport()
+                                        progress.Report(new ProgressReport()
                                         {
                                             progressPercentage = (bytes * 1d) / (totalLength * 1d) * 100,
                                             bytesToRead = bytes,
@@ -177,7 +177,7 @@ namespace Stocks.WPF
             cts1 = new CancellationTokenSource();
 
             //Progres reporting
-            var progress = new Progress<ProgreesReport>(percent =>
+            var progress = new Progress<ProgressReport>(percent =>
             {
                 taskProgress1.Value = percent.progressPercentage;
                 logs1.Text += $"{percent.bytesToRead}/{percent.totalBytes} downloaded!!{Environment.NewLine}";
@@ -207,7 +207,7 @@ namespace Stocks.WPF
         }
     }
 
-    public class ProgreesReport
+    public class ProgressReport
     {
         public double progressPercentage { get; set; }
         public long totalBytes { get; set; }
